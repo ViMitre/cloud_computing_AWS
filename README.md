@@ -44,7 +44,27 @@ cd /home/ubuntu/app
 sudo npm install pm2 -g -y
 sudo npm install
 sudo rm /etc/nginx/sites-available/default
-sudo ln -s /home/vagrant/config_files/default /etc/nginx/sites-available/default
+sudo nano /etc/nginx/sites-available/default
+```
+Change nginx config to this:
+```
+server {
+    listen 80;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+```
 sudo nginx -t 
 sudo systemctl restart nginx
 npm start
