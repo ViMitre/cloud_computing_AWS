@@ -1,4 +1,6 @@
 # Cloud Computing AWS
+![diagram1](https://user-images.githubusercontent.com/88156993/131873564-f9b3d906-f8b8-4fba-bde2-3408df043f9f.png)
+
 
 ## Launch instance
 
